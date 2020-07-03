@@ -16,10 +16,10 @@ WiFiClient			glient;		//Google client
 //PZEM004Tv30   pzem(13, 15);   //Rx,Tx,(D7,D8) another config
 PZEM004Tv30     pzem(2, 0);     //Rx,Tx,(gpio2,gpio0) on ESP-01 
 
-String	tsStatus;		        //ThingSpeak, 255 char, zero terminated
+String	tsStatus;		        //ThingSpeak, 255 char, null terminated
 String  status;
 
-int     error   =   0;          //0 no error; 1,2,4,8,16,32 errors for each parameter
+int     error   =   0;          //0 no error; 1,2,4,8,16,32 -> errors for each parameter
 float   voltage, current, power, energy, frequency, pf;
 float   Vmax    =   120.0;
 float   Vmin    =   120.0;
@@ -136,13 +136,13 @@ String getTime()
 void setup() 
 {
     Serial.begin(115200);
-  	tsStatus = String("");
-  	Serial.println(F("\nFilename: PZEM_SoftSerial.ino/30jun2020 "));
-	//WiFi.persistent(false);			//see ESP8266WiFiGeneric.cpp - WiFi library
-    //Wifi.persistent(false) is used for deep-sleep, to keep wifi param in ram
-    wifiConnect(60);                //try for 60 seconds
-    glient.setTimeout(5000);        //to the beginning
-    //getTime();
+	tsStatus = String("");
+	Serial.println(F("\nFilename: PZEM_SoftSerial.ino/30jun2020 "));
+	//WiFi.persistent(false);
+	//Wifi.persistent(false) is used for deep-sleep, to keep wifi param in ram
+	wifiConnect(60);                //try for 60 seconds
+	glient.setTimeout(5000); 
+	getTime();
 }
 
 void loop() 
