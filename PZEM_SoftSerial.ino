@@ -1,29 +1,5 @@
-/*
-This code works as per 20jun2020
-The new version is in the folder 
-/home/ctv/Documents/PZEM_SoftSerial/PZEM_SoftSerial/
-The new (this) version should do:
-[X]Change from 5 minutes to 1 minute
-[o]Interrogating a google server for the date and time 
-[o]Reset the energy on first day of each month at 00:00:00
-
-To do:
-1.  [X]include libraries to communicate with ThingSpeak
-2.  [X]transform the data read from PZEM in text to be sent to ThingSpeak
-3.  [o]synchronize with MQTT or with NTP server
-4.  [X]save the max and the min for <voltage> and the max for <power> and send them to TS as status
-5.  [X]use ESP-01 with SoftwareSerial: Rx -> gpio2, Tx -> gpio0
-
-6.  [o]use MQTT, subscribe to <date/time> and send data each 5 min exactly
-7.  [_]websockets
-8.  [_]resetEnergy at the end of the cycle (see HQ)
-
-The update of the channel is made each 5min.
-    bool setPowerAlarm(uint16_t watts);
-    bool getPowerAlarm();
-
-*/
-/* Use software serial for the PZEM
+/* 
+ * Use software serial for the PZEM
  * Pin gpio2 Rx (Connects to the Tx pin on the PZEM)
  * Pin gpio0 Tx (Connects to the Rx pin on the PZEM)
 */
